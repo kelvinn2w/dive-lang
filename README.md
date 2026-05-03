@@ -1,25 +1,25 @@
-# Dive — sadə proqramlaşdırma dili
+# Dive — a simple programming language
 
-**Dive** — Python-bənzər, girinti əsaslı, hər şeyi etməyə imkan verən sadə bir
-proqramlaşdırma dilidir. İnterpretator Python ilə yazılıb, ona görə də hər
-yerdə işləyir.
+**Dive** is a Python-like, indentation-based, easy-to-use programming language
+that lets you do almost anything. The interpreter is written in Python, so it
+runs anywhere Python runs.
 
 ```text
-function salamla(ad):
-    print("Salam, " + ad + "!")
+function greet(name):
+    print("Hello, " + name + "!")
 
-salamla("Dünya")
+greet("World")
 ```
 
-## Niyə Dive?
+## Why Dive?
 
-- **Sadə sintaksis** — Python-a oxşar, oxunaqlı, başa düşülən
-- **Hər şeyi etməyə imkan verir** — siniflər, modullar, fayl I/O, exceptions
-- **İngiliscə açar sözlər** — `if`, `while`, `function`, `class`, `import`
-- **Sıfır asılılıq** — yalnız Python 3.9+ tələb olunur
-- **Genişlənə bilən** — yeni built-in funksiya əlavə etmək asandır
+- **Simple syntax** — Python-like, readable, intuitive
+- **Full-featured** — classes, modules, file I/O, exceptions
+- **English keywords** — `if`, `while`, `function`, `class`, `import`
+- **Zero dependencies** — only requires Python 3.9+
+- **Extensible** — easy to add new built-in functions
 
-## Quraşdırma
+## Installation
 
 ```bash
 git clone https://github.com/kelvinn2w/dive-lang.git
@@ -27,52 +27,52 @@ cd dive-lang
 pip install -e .
 ```
 
-Yoxla:
+Verify:
 
 ```bash
 dive --version
 dive examples/01_hello.dive
 ```
 
-REPL də var:
+REPL is also available:
 
 ```bash
-dive        # interaktiv rejim
+dive        # interactive mode
 ```
 
-## Tez baxış
+## Quick tour
 
-### Salam Dünya
+### Hello World
 
 ```text
-print("Salam, Dünya!")
+print("Hello, World!")
 ```
 
-### Dəyişənlər və tiplər
+### Variables and types
 
 ```text
-ad = "Elvin"            # string
-yas = 25                # int
-boy = 1.78              # float
-proqramcidir = true     # bool
-hicnese = none          # null
+name = "Elvin"          # string
+age = 25                # int
+height = 1.78           # float
+is_developer = true     # bool
+nothing = none          # null
 
-print(type(yas))        # int
-print(type(ad))         # string
+print(type(age))        # int
+print(type(name))       # string
 ```
 
-### Şərtlər
+### Conditionals
 
 ```text
-if yas < 18:
-    print("uşaq")
-elif yas < 65:
-    print("böyük")
+if age < 18:
+    print("child")
+elif age < 65:
+    print("adult")
 else:
-    print("yaşlı")
+    print("senior")
 ```
 
-### Döngülər
+### Loops
 
 ```text
 for i in range(0, 5):
@@ -83,7 +83,7 @@ while i < 3:
     print(i)
     i += 1
 
-# break və continue də işləyir
+# break and continue work too
 for n in range(0, 10):
     if n % 2 == 0:
         continue
@@ -92,54 +92,54 @@ for n in range(0, 10):
     print(n)
 ```
 
-### Funksiyalar
+### Functions
 
 ```text
-function quvvet(taban, ust=2):
-    return taban ** ust
+function power(base, exp=2):
+    return base ** exp
 
-print(quvvet(3))         # 9
-print(quvvet(2, 10))     # 1024
+print(power(3))          # 9
+print(power(2, 10))      # 1024
 
-# Lambda
-ikiqat = lambda x: x * 2
-print(ikiqat(7))         # 14
+# Lambdas
+double = lambda x: x * 2
+print(double(7))         # 14
 
 # Closures
-function sayğac(başlanğıc=0):
-    n = [başlanğıc]
-    function növbəti():
+function counter(start=0):
+    n = [start]
+    function next_value():
         n[0] = n[0] + 1
         return n[0]
-    return növbəti
+    return next_value
 
-c = sayğac(10)
+c = counter(10)
 print(c())  # 11
 print(c())  # 12
 ```
 
-### Siniflər və irsiyyət
+### Classes and inheritance
 
 ```text
-class Heyvan:
-    function init(self, ad):
-        self.ad = ad
-    function ses(self):
+class Animal:
+    function init(self, name):
+        self.name = name
+    function sound(self):
         return "..."
-    function tanit(self):
-        print(self.ad + " deyir: " + self.ses())
+    function introduce(self):
+        print(self.name + " says: " + self.sound())
 
-class It(Heyvan):
-    function ses(self):
-        return "Hav-hav!"
+class Dog(Animal):
+    function sound(self):
+        return "Woof!"
 
-It("Rex").tanit()       # Rex deyir: Hav-hav!
+Dog("Rex").introduce()  # Rex says: Woof!
 ```
 
-`init` — konstruktordur (Python-da `__init__` ilə eyni). `tostring` metodu varsa,
-`print(obyekt)` və `str(obyekt)` onu çağırır.
+`init` is the constructor (same as Python's `__init__`). If a `tostring` method
+is defined, `print(obj)` and `str(obj)` will call it.
 
-### Siyahılar
+### Lists
 
 ```text
 xs = [1, 2, 3, 4]
@@ -149,88 +149,88 @@ print(xs[1:3])         # [2, 3]
 print(xs[::-1])        # [5, 4, 3, 2, 1]
 print(len(xs))         # 5
 
-# metodlar: append, pop, insert, remove, index, count,
+# methods: append, pop, insert, remove, index, count,
 # sort, reverse, clear, copy, extend, join, length
 ```
 
-### Lüğətlər
+### Dicts
 
 ```text
-d = {"ad": "Elvin", "yas": 25}
-d["sehr"] = "Bakı"
+d = {"name": "Elvin", "age": 25}
+d["city"] = "Baku"
 
-print(d["ad"])
+print(d["name"])
 print(d.keys())
 print(d.values())
-print(d.has("yas"))     # true
+print(d.has("age"))    # true
 
 for k in d:
     print(k + " -> " + str(d[k]))
 ```
 
-### Xətalar (try/catch/finally)
+### Errors (try/catch/finally)
 
 ```text
-function bol(a, b):
+function divide(a, b):
     if b == 0:
-        throw "Sıfıra bölmə qadağandır!"
+        throw "Division by zero is not allowed!"
     return a / b
 
 try:
-    print(bol(10, 0))
+    print(divide(10, 0))
 catch err:
-    print("Xəta:", err)
+    print("Error:", err)
 finally:
-    print("Tamamlandı")
+    print("Done")
 ```
 
-`throw` istənilən dəyəri ata bilər (string, dict, sinif obyekti və s.).
+`throw` can throw any value (string, dict, class instance, etc.).
 
-### Modullar
+### Modules
 
-İki cür import:
+Two flavours of import:
 
 ```text
-import math                  # built-in modul
-import "utils.dive" as u     # öz fayllarınız (yola görə)
+import math                  # built-in module
+import "utils.dive" as u     # your own files (by path)
 
 print(math.sqrt(16))
-print(u.ikiqat(21))
+print(u.double(21))
 ```
 
-#### Daxili modullar
+#### Built-in modules
 - `math` — pi, e, tau, sqrt, pow, log, log2, log10, exp, sin, cos, tan,
   asin, acos, atan, atan2, floor, ceil, round, gcd, factorial
 - `random` — seed, random, randint, choice, shuffle, uniform
 - `time` — now, sleep, format
 - `os` — getenv, setenv, listdir, exists, cwd, join
 
-### Fayl I/O
+### File I/O
 
 ```text
-write_file("notlar.txt", "Salam!\n")
-məzmun = read_file("notlar.txt")
-print(məzmun)
+write_file("notes.txt", "Hello!\n")
+content = read_file("notes.txt")
+print(content)
 
-f = open("notlar.txt", "a")
-f.writeline("yeni sətir")
+f = open("notes.txt", "a")
+f.writeline("a new line")
 f.close()
 ```
 
-### String metodları
+### String methods
 
 `s.upper()`, `s.lower()`, `s.strip()`, `s.lstrip()`, `s.rstrip()`,
 `s.split(sep?)`, `s.join(items)`, `s.replace(a, b)`, `s.startswith(s)`,
 `s.endswith(s)`, `s.contains(s)`, `s.find(s)`, `s.count(s)`, `s.length()`,
 `s.format(*args)`.
 
-## Daxili funksiyalar
+## Built-in functions
 
 `print`, `input`, `len`, `range`, `str`, `int`, `float`, `bool`, `list`, `dict`,
 `abs`, `min`, `max`, `sum`, `sorted`, `reversed`, `type`, `isinstance`, `repr`,
 `open`, `read_file`, `write_file`, `append_file`, `file_exists`.
 
-## Açar sözlər
+## Keywords
 
 ```
 if elif else while for in function return class import as from
@@ -241,13 +241,13 @@ break continue pass lambda
 ## CLI
 
 ```bash
-dive FAYL.dive          # faylı icra et
-dive -c "print(1+2)"    # birbaşa kod
+dive FILE.dive          # run a file
+dive -c "print(1+2)"    # run code directly
 dive                    # REPL
 dive --version
 ```
 
-## Layihə strukturu
+## Project layout
 
 ```
 dive-lang/
@@ -256,32 +256,33 @@ dive-lang/
 │   ├── __main__.py        # CLI
 │   ├── lexer.py           # tokenizer
 │   ├── parser.py          # recursive descent parser
-│   ├── ast_nodes.py       # AST tipləri
+│   ├── ast_nodes.py       # AST node types
 │   ├── interpreter.py     # tree-walking interpreter
-│   ├── environment.py     # scope/dəyişənlər
+│   ├── environment.py     # scope / variables
 │   ├── values.py          # DiveFunction, DiveClass, DiveInstance
-│   ├── builtins.py        # daxili funksiya və modullar
-│   └── errors.py          # xəta sinifləri
-├── examples/              # nümunə proqramlar
+│   ├── builtins.py        # built-in functions and modules
+│   └── errors.py          # error classes
+├── examples/              # example programs
 ├── tests/                 # pytest test suite
 ├── pyproject.toml
 └── README.md
 ```
 
-## Test
+## Tests
 
 ```bash
 pip install -e ".[dev]"
 pytest -q
 ```
 
-## Genişləndirmək
+## Extending
 
-Yeni built-in funksiya əlavə etmək üçün `dive/builtins.py` faylına gedib
-funksiyanı yazın və `install_builtins` daxilində qeyd edin.
+To add a new built-in function, edit `dive/builtins.py`, add the function and
+register it inside `install_builtins`.
 
-Yeni operatorlar üçün lexer, parser və interpreter-də müvafiq düzəlişlər lazımdır.
+For new operators you'll need matching changes in the lexer, parser and
+interpreter.
 
-## Lisenziya
+## License
 
 MIT
