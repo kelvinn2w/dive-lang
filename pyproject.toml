@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dive-lang"
+version = "0.1.0"
+description = "Dive — Python-bənzər sadə proqramlaşdırma dili (interpretator Python ilə yazılıb)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Elvin Kazimli", email = "elvinkazimli235@gmail.com" }
+]
+keywords = ["language", "interpreter", "scripting", "azerbaijani"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Interpreters",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov"]
+
+[project.scripts]
+dive = "dive.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["dive*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

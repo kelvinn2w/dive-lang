@@ -1,0 +1,49 @@
+# Funksiyalar
+function salamla(ad):
+    return "Salam, " + ad + "!"
+
+print(salamla("Elvin"))
+
+# Default arqumentlər
+function quvvet(taban, ust=2):
+    return taban ** ust
+
+print(quvvet(5))
+print(quvvet(2, 10))
+
+# Açar arqumentlər
+function tanit(ad, yas, sehr="Bakı"):
+    print(ad + ", " + str(yas) + " yaş, " + sehr)
+
+tanit("Aysel", 22)
+tanit("Ramin", 30, sehr="Gəncə")
+
+# Rekursiya
+function fib(n):
+    if n < 2:
+        return n
+    return fib(n - 1) + fib(n - 2)
+
+for i in range(0, 10):
+    print("fib(" + str(i) + ") =", fib(i))
+
+# Closure
+function sayğac(başlanğıc=0):
+    sayi = [başlanğıc]
+    function növbəti():
+        sayi[0] = sayi[0] + 1
+        return sayi[0]
+    return növbəti
+
+c = sayğac(10)
+print(c())  # 11
+print(c())  # 12
+print(c())  # 13
+
+# Lambda
+ikiqat = lambda x: x * 2
+print(ikiqat(21))
+
+# Daha mürəkkəb lambda
+add = lambda a, b: a + b
+print(add(3, 4))

@@ -1,0 +1,27 @@
+# Sayı tap oyunu (interaktiv olmayan demo versiyası)
+import random as rnd
+
+rnd.seed(7)
+gizli = rnd.randint(1, 100)
+
+# Demo üçün avtomatik tapan: ikili axtarış
+function tap_oyun(gizli):
+    asagi = 1
+    yuxari = 100
+    cəhd = 0
+    while asagi <= yuxari:
+        cəhd = cəhd + 1
+        təxmin = (asagi + yuxari) // 2
+        print("Cəhd " + str(cəhd) + ": " + str(təxmin))
+        if təxmin == gizli:
+            print("Tapıldı! Cavab: " + str(gizli) + " (" + str(cəhd) + " cəhddə)")
+            return cəhd
+        elif təxmin < gizli:
+            print("  Çox kiçikdir")
+            asagi = təxmin + 1
+        else:
+            print("  Çox böyükdür")
+            yuxari = təxmin - 1
+    return -1
+
+tap_oyun(gizli)

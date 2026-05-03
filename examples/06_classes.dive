@@ -1,0 +1,42 @@
+# Siniflər və irsiyyət
+class Heyvan:
+    function init(self, ad, yas):
+        self.ad = ad
+        self.yas = yas
+
+    function tanit(self):
+        print(self.ad + " (" + str(self.yas) + " yaş) deyir: " + self.ses())
+
+    function ses(self):
+        return "..."
+
+class It(Heyvan):
+    function ses(self):
+        return "Hav-hav!"
+
+class Pisik(Heyvan):
+    function init(self, ad, yas, rəng):
+        # Üst sinif init-ini çağırırıq əl ilə (super yoxdur, sadəlik üçün)
+        self.ad = ad
+        self.yas = yas
+        self.rəng = rəng
+
+    function ses(self):
+        return "Miyav!"
+
+    function tanit(self):
+        print(self.ad + " (" + self.rəng + ", " + str(self.yas) + " yaş) deyir: " + self.ses())
+
+heyvanlar = [
+    It("Rex", 3),
+    Pisik("Tom", 5, "qara"),
+    Heyvan("Misteriya", 1)
+]
+
+for h in heyvanlar:
+    h.tanit()
+
+# Tip yoxlaması
+print(isinstance(heyvanlar[0], It))
+print(isinstance(heyvanlar[0], Heyvan))
+print(isinstance(heyvanlar[1], It))

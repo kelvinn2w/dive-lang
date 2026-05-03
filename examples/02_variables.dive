@@ -1,0 +1,21 @@
+# Dəyişənlər və əsas tiplər
+ad = "Elvin"
+yas = 25
+boy = 1.78
+proqramcidir = true
+hicnese = none
+
+print("Ad:", ad)
+print("Yaş:", yas)
+print("Boy:", boy)
+print("Proqramçıdır:", proqramcidir)
+print("Heç nə:", hicnese)
+
+# Tip yoxlaması
+print("yas tipi:", type(yas))
+print("ad tipi:", type(ad))
+print("boy tipi:", type(boy))
+
+# Tip çevirməsi
+print("Cəm:", int("10") + int("20"))
+print("Mətn:", str(yas) + " yaşındadır")
