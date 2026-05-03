@@ -1,0 +1,33 @@
+# Xəta idarəetmə
+function bol(a, b):
+    if b == 0:
+        throw "Sıfıra bölmə qadağandır!"
+    return a / b
+
+# Sadə try/catch
+try:
+    print(bol(10, 2))
+    print(bol(10, 0))
+catch err:
+    print("Xəta tutuldu:", err)
+
+# try / catch / finally
+try:
+    print("İcra olunur")
+    throw "Test xətası"
+catch e:
+    print("Tutdum:", e)
+finally:
+    print("Bu hər zaman icra olunur")
+
+# Nested
+function risky(x):
+    if x < 0:
+        throw "Mənfi olmaz"
+    return x * 2
+
+for v in [3, -1, 5]:
+    try:
+        print(risky(v))
+    catch e:
+        print("v=" + str(v) + " üçün xəta:", e)

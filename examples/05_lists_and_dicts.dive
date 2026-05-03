@@ -1,0 +1,43 @@
+# Siyahılar və lüğətlər
+meyveler = ["alma", "armud", "ərik", "albalı"]
+print("Meyvələr:", meyveler)
+print("İlk:", meyveler[0])
+print("Sonuncu:", meyveler[-1])
+print("Sayı:", len(meyveler))
+
+# Əlavə et və sil
+meyveler.append("üzüm")
+print("Əlavədən sonra:", meyveler)
+
+meyveler.remove("armud")
+print("Silindikdən sonra:", meyveler)
+
+# Slicing
+print("İlk 2:", meyveler[0:2])
+print("Tərs:", meyveler[::-1])
+
+# join
+print("Sırasıyla:", ", ".join(meyveler))
+
+# Lüğət
+şəxs = {
+    "ad": "Elvin",
+    "yas": 25,
+    "sehr": "Bakı"
+}
+
+print("Ad:", şəxs["ad"])
+print("Açarlar:", şəxs.keys())
+print("Dəyərlər:", şəxs.values())
+
+# Açar əlavə et
+şəxs["peşə"] = "proqramçı"
+print("Yenilənmiş:", şəxs)
+
+# Açar varmı?
+if şəxs.has("yas"):
+    print("Yaş var")
+
+# İterasiya
+for açar in şəxs:
+    print(açar + " -> " + str(şəxs[açar]))

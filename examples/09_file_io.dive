@@ -1,0 +1,35 @@
+# Fayl I/O
+import os
+
+yol = "/tmp/dive_demo.txt"
+
+# Yazma
+write_file(yol, "Salam, Dive!\nBu ikinci sətirdir.\n")
+
+# Oxuma
+məzmun = read_file(yol)
+print("Bütün məzmun:")
+print(məzmun)
+
+# Sətir-sətir oxuma
+f = open(yol, "r")
+sətir_no = 1
+while true:
+    sətir = f.readline()
+    if sətir == "":
+        break
+    print("[" + str(sətir_no) + "] " + sətir.strip())
+    sətir_no = sətir_no + 1
+f.close()
+
+# Sona əlavə et
+append_file(yol, "Üçüncü sətir əlavə edildi.\n")
+print("Yeni məzmun:")
+print(read_file(yol))
+
+# Fayl varmı?
+if file_exists(yol):
+    print("Fayl mövcuddur:", yol)
+
+# Cari qovluq
+print("Cari qovluq:", os.cwd())

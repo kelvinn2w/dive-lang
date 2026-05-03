@@ -1,0 +1,17 @@
+# Modullar
+import math
+import random as rnd
+import time
+
+print("pi =", math.pi)
+print("sqrt(2) =", math.sqrt(2))
+print("sin(0) =", math.sin(0))
+print("log10(1000) =", math.log10(1000))
+
+rnd.seed(42)
+print("Təsadüfi:", rnd.random())
+print("1-100:", rnd.randint(1, 100))
+print("Seçim:", rnd.choice(["alma", "armud", "ərik"]))
+
+print("Cari vaxt:", time.now())
+print("Formatda:", time.format(time.now(), "%Y-%m-%d %H:%M:%S"))
